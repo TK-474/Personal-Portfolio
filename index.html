@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Talal Khan • Portfolio</title>
+    <meta name="description" content="Talal Khan — ICT EHR Trainee at AKU; ML and full-stack projects, experience, and contact." />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Talal Khan • Portfolio" />
+    <meta property="og:description" content="Projects, experience, and ways to get in touch." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.example" />
+    <meta property="og:image" content="/assets/img/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js CDN -->
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <link href="assets/css/styles.css" rel="stylesheet" />
+  </head>
+  <body class="bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-[Inter] relative">
+    <!-- Global 3D background canvas -->
+    <div id="global-three-container" class="fixed inset-0 -z-10 pointer-events-none"></div>
+    <!-- Header / Nav -->
+    <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/70 border-b border-transparent">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <a href="#hero" class="font-semibold tracking-tight">Talal Khan</a>
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400">About</a>
+            <a href="#education" class="hover:text-blue-600 dark:hover:text-blue-400">Education</a>
+            <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400">Projects</a>
+            <a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400">Experience</a>
+            <a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400">Skills</a>
+            <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+          </nav>
+          <div class="hidden md:flex items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
+            <a href="mailto:talalkhan213@gmail.com" class="hover:text-blue-600 dark:hover:text-blue-400">talalkhan213@gmail.com</a>
+            <a href="tel:+923042901824" class="hover:text-blue-600 dark:hover:text-blue-400">+92 304 2901824</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="themeToggle" aria-label="Toggle dark mode" class="p-2 rounded-md border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">
+              <span id="themeIcon" aria-hidden="true">🌙</span>
+            </button>
+            <button id="menuToggle" class="md:hidden p-2 rounded-md border border-slate-200 dark:border-slate-700">☰</button>
+          </div>
+        </div>
+        <nav id="mobileMenu" class="md:hidden hidden pb-4">
+          <div class="flex flex-col gap-2 text-sm">
+            <a href="#about" class="py-2">About</a>
+            <a href="#education" class="py-2">Education</a>
+            <a href="#projects" class="py-2">Projects</a>
+            <a href="#experience" class="py-2">Experience</a>
+            <a href="#skills" class="py-2">Skills</a>
+            <a href="#contact" class="py-2">Contact</a>
+            <a href="mailto:talalkhan213@gmail.com" class="py-2">talalkhan213@gmail.com</a>
+            <a href="tel:+923042901824" class="py-2">+92 304 2901824</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero" class="relative overflow-hidden">
+      <div class="max-w-6xl mx-auto px-4 py-20 md:py-28">
+        <div class="grid md:grid-cols-2 items-center gap-10">
+          <div class="space-y-6 animate-on-scroll relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+              ML practitioner and full‑stack developer focused on useful products
+            </h1>
+            <p class="text-slate-600 dark:text-slate-300 text-lg">
+              I’m Talal, currently an ICT EHR Trainee at Aga Khan University. I build ML systems, fine-tune LLMs, and ship web apps end‑to‑end.
+            </p>
+            <div class="flex gap-3">
+              <a href="#projects" class="inline-flex items-center px-5 py-3 rounded-md bg-blue-600 text-white hover:bg-blue-500">View Projects</a>
+              <a href="#contact" class="inline-flex items-center px-5 py-3 rounded-md border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Contact Me</a>
+              <a href="mailto:talalkhan213@gmail.com" class="inline-flex items-center px-5 py-3 rounded-md border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Email me</a>
+            </div>
+          </div>
+          <div class="relative animate-on-scroll z-10">
+            <div class="aspect-square rounded-full overflow-hidden border-4 border-slate-200/60 dark:border-slate-700/60 shadow-lg">
+              <img src="assets/img/mypic.jpeg" alt="Portrait of Talal Khan" loading="eager" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="border-t border-slate-200 dark:border-slate-800 relative">
+      <div class="absolute inset-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm"></div>
+      <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">About</h2>
+        <p class="text-slate-600 dark:text-slate-300 max-w-3xl">
+          BSCS graduate (IBA, 2021–2025). Experience across ML (Whisper, pyannote, MBart, LoRA/DPO), data (Hadoop/Spark/Kafka/Hive/HBase), and web (.NET, FastAPI, React). I value clarity, performance, and thoughtful UX.
+        </p>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="border-t border-slate-200 dark:border-slate-800 relative">
+      <div class="absolute inset-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm"></div>
+      <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Education</h2>
+        <ul class="space-y-4">
+          <li class="animate-on-scroll">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold">BSCS, Institute of Business Administration</p>
+              <span class="text-sm text-slate-500">2021 — 2025</span>
+            </div>
+          </li>
+          <li class="animate-on-scroll">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold">A‑Levels, Nixor College</p>
+              <span class="text-sm text-slate-500">2019 — 2021</span>
+            </div>
+          </li>
+          <li class="animate-on-scroll">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold">O‑Levels, Beaconhouse Jubilee Campus</p>
+              <span class="text-sm text-slate-500">2016 — 2019</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+         <!-- Experience -->
+         <section id="experience" class="border-t border-slate-200 dark:border-slate-800 relative">
+           <div class="absolute inset-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm"></div>
+           <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Experience</h2>
+            <ul class="space-y-6">
+              <li class="animate-on-scroll">
+                <div class="flex items-center justify-between">
+                  <p class="font-semibold">ICT EHR Trainee • Aga Khan University — Clinical Systems</p>
+                  <span class="text-sm text-slate-500">Jul 2025 — Present</span>
+                </div>
+                <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 space-y-1 mt-2">
+                  <li>Support current AKU applications; build new features on .NET.</li>
+                  <li>Work with Meditech Expanse to consolidate data from legacy systems.</li>
+                  <li>Integrate AI into existing and new apps to improve user experience.</li>
+                </ul>
+              </li>
+              <li class="animate-on-scroll">
+                <div class="flex items-center justify-between">
+                  <p class="font-semibold">Machine Learning Intern • CodeXcue</p>
+                  <span class="text-sm text-slate-500">May 2024 — Jul 2024</span>
+                </div>
+                <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 space-y-1 mt-2">
+                  <li>Regression model for tip prediction; classification for spam detection.</li>
+                  <li>Explored hyperparameter tuning; delivered a laptop price predictor (R² 0.9985).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+     <!-- Projects -->
+     <section id="projects" class="border-t border-slate-200 dark:border-slate-800 relative">
+       <div class="absolute inset-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm"></div>
+       <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 relative z-10">
+        <div class="flex items-end justify-between mb-6">
+          <h2 class="text-3xl md:text-4xl font-bold">Projects</h2>
+          <a href="#" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">View GitHub</a>
+        </div>
+        <div id="projectsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+
+
+    <!-- Skills -->
+    <section id="skills" class="border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-6xl mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Tools</h2>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <img src="https://skillicons.dev/icons?i=python" alt="Python" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=c" alt="C" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=cpp" alt="C++" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=java" alt="Java" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=rust" alt="Rust" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=go" alt="Go" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=html" alt="HTML" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=css" alt="CSS" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=js" alt="JavaScript" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=react" alt="React" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=express" alt="Express" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=django" alt="Django" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=fastapi" alt="FastAPI" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=pytorch" alt="PyTorch" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=tensorflow" alt="TensorFlow" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=sklearn" alt="scikit-learn" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=mongodb" alt="MongoDB" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=redis" alt="Redis" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=aws" alt="AWS" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=docker" alt="Docker" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=kubernetes" alt="Kubernetes" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=flutter" alt="Flutter" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=figma" alt="Figma" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=git" alt="Git" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=github" alt="GitHub" class="w-16 h-16 hover:scale-110 transition-transform" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-6xl mx-auto px-4 py-16 md:py-24">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Contact</h2>
+        <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST" class="grid md:grid-cols-2 gap-4 max-w-3xl">
+          <input type="text" name="name" placeholder="Your name" required class="input" />
+          <input type="email" name="email" placeholder="Your email" required class="input" />
+          <textarea name="message" placeholder="Your message" required class="input md:col-span-2" rows="5"></textarea>
+          <button type="submit" class="md:col-span-2 inline-flex items-center justify-center px-5 py-3 rounded-md bg-blue-600 text-white hover:bg-blue-500">Send</button>
+        </form>
+        <p id="formStatus" class="mt-3 text-sm"></p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-6xl mx-auto px-4 py-10 text-sm text-slate-500 flex flex-col md:flex-row items-center justify-between gap-3">
+        <p>© <span id="year"></span> Talal Khan. All rights reserved.</p>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/tk-474" target="_blank" rel="noreferrer" class="hover:text-slate-700 dark:hover:text-slate-300">GitHub</a>
+          <a href="https://www.linkedin.com/in/talalkhan47" target="_blank" rel="noreferrer" class="hover:text-slate-700 dark:hover:text-slate-300">LinkedIn</a>
+          <a href="assets/docs/Talal_Khan_Resume.pdf" target="_blank" rel="noreferrer" class="hover:text-slate-700 dark:hover:text-slate-300">Resume</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+  <script>
+    // Apply persisted theme before paint to avoid FOUC
+    (function () {
+      try {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+</html>
+
+
