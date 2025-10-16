@@ -73,17 +73,17 @@
     }
     console.log('Rendering', projects.length, 'projects');
     projectsGrid.innerHTML = projects
-      .map(function (p) {
+      .map(function (p, index) {
         var tags = (p.tags || []).map(function (t) { return '<span class="tag">' + t + '</span>'; }).join(' ');
         return (
-          '<article class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-600 transition-colors">' +
+          '<article class="project-tile p-5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-600 transition-colors cursor-pointer" data-project-index="' + index + '">' +
           (p.image ? '<img src="' + p.image + '" alt="' + (p.title || '') + '" class="w-full h-40 object-cover rounded-lg mb-4" />' : '') +
           '<h3 class="font-semibold text-lg mb-1">' + (p.title || 'Untitled') + '</h3>' +
           '<p class="text-sm text-slate-600 dark:text-slate-300 mb-3">' + (p.description || '') + '</p>' +
           '<div class="flex flex-wrap gap-2 mb-3">' + tags + '</div>' +
           '<div class="flex items-center gap-3 text-sm">' +
-          (p.demo ? '<a class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noreferrer" href="' + p.demo + '">Demo</a>' : '') +
-          (p.source ? '<a class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noreferrer" href="' + p.source + '">Source</a>' : '') +
+          (p.demo ? '<a class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noreferrer" href="' + p.demo + '" onclick="event.stopPropagation()">Demo</a>' : '') +
+          (p.source ? '<a class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noreferrer" href="' + p.source + '" onclick="event.stopPropagation()">Source</a>' : '') +
           '</div>' +
           '</article>'
         );
@@ -150,6 +150,83 @@
         renderProjects(fallbackProjects); 
       });
   }
+
+  // Project Modal functionality
+  var projectModal = document.getElementById('projectModal');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalContent = document.getElementById('modalContent');
+  var modalActions = document.getElementById('modalActions');
+  var modalClose = document.getElementById('modalClose');
+  var modalBackdrop = document.getElementById('modalBackdrop');
+  var currentProjects = [];
+
+  function openProjectModal(projectIndex) {
+    var project = currentProjects[projectIndex];
+    if (!project) return;
+
+    modalTitle.textContent = project.title || 'Untitled Project';
+    
+    var tags = (project.tags || []).map(function (t) { return '<span class="tag">' + t + '</span>'; }).join(' ');
+    
+    modalContent.innerHTML = 
+      '<div class="space-y-4">' +
+      '<p class="text-slate-600 dark:text-slate-300 text-lg">' + (project.description || '') + '</p>' +
+      '<div class="flex flex-wrap gap-2">' + tags + '</div>' +
+      (project.details ? '<div class="prose dark:prose-invert max-w-none"><p class="text-slate-700 dark:text-slate-300">' + project.details + '</p></div>' : '') +
+      '</div>';
+
+    var actionsHtml = '';
+    if (project.demo) {
+      actionsHtml += '<a href="' + project.demo + '" target="_blank" rel="noreferrer" class="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-colors">View Demo</a>';
+    }
+    if (project.source) {
+      actionsHtml += '<a href="' + project.source + '" target="_blank" rel="noreferrer" class="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">View Source</a>';
+    }
+    modalActions.innerHTML = actionsHtml;
+
+    projectModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProjectModal() {
+    projectModal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  // Modal event listeners
+  if (modalClose) {
+    modalClose.addEventListener('click', closeProjectModal);
+  }
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', closeProjectModal);
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !projectModal.classList.contains('hidden')) {
+      closeProjectModal();
+    }
+  });
+
+  // Project tile click handlers
+  function attachProjectClickHandlers() {
+    var projectTiles = document.querySelectorAll('.project-tile');
+    projectTiles.forEach(function(tile) {
+      tile.addEventListener('click', function() {
+        var projectIndex = parseInt(this.getAttribute('data-project-index'));
+        openProjectModal(projectIndex);
+      });
+    });
+  }
+
+  // Update the projects rendering to store current projects and attach handlers
+  var originalRenderProjects = renderProjects;
+  renderProjects = function(projects) {
+    currentProjects = projects;
+    originalRenderProjects(projects);
+    // Attach click handlers after a short delay to ensure DOM is updated
+    setTimeout(attachProjectClickHandlers, 100);
+  };
 
   // Contact form UX
   var contactForm = document.getElementById('contactForm');
@@ -245,6 +322,61 @@
     document.addEventListener('visibilitychange', function () {
       isPaused = document.hidden;
     });
+
+    // Scroll-reactive stars + section overlay highlighting
+    var baseSize = material.size;
+    var baseOpacity = material.opacity;
+    var scrollTimeoutId = null;
+    var sectionOverlays = Array.prototype.slice.call(document.querySelectorAll('.section-overlay'));
+
+    function boostStars() {
+      material.size = Math.min(baseSize * 2, 3);
+      material.opacity = Math.min(baseOpacity + 0.3, 1);
+    }
+
+    function normalizeStars() {
+      material.size = baseSize;
+      material.opacity = baseOpacity;
+    }
+
+    function highlightCurrentSection() {
+      if (!sectionOverlays.length) return;
+      var viewportCenter = window.scrollY + window.innerHeight * 0.35;
+      var activeIndex = -1;
+      for (var i = 0; i < sectionOverlays.length; i++) {
+        var parentSection = sectionOverlays[i].parentElement;
+        if (!parentSection) continue;
+        var rect = parentSection.getBoundingClientRect();
+        var top = rect.top + window.scrollY;
+        var bottom = top + rect.height;
+        if (viewportCenter >= top && viewportCenter < bottom) {
+          activeIndex = i;
+          break;
+        }
+      }
+      for (var j = 0; j < sectionOverlays.length; j++) {
+        var el = sectionOverlays[j];
+        if (!el || !el.style) continue;
+        el.style.opacity = (j === activeIndex) ? '1' : '0';
+      }
+    }
+
+    window.addEventListener('scroll', function () {
+      boostStars();
+      // Hide overlays while scrolling for clarity
+      for (var i = 0; i < sectionOverlays.length; i++) {
+        var el = sectionOverlays[i];
+        if (el && el.style) el.style.opacity = '0';
+      }
+      if (scrollTimeoutId) clearTimeout(scrollTimeoutId);
+      scrollTimeoutId = setTimeout(function () {
+        normalizeStars();
+        highlightCurrentSection();
+      }, 200);
+    }, { passive: true });
+
+    // Initial highlight on load
+    highlightCurrentSection();
 
     // Animate
     var clock = new THREE.Clock();
