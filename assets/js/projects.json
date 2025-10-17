@@ -5,7 +5,9 @@
     "details": "Final Year Project: Developed an end-to-end Urdu audio processing application featuring automatic speaker diarization, transcription, and summarization. Implemented Whisper large-v3-turbo for accurate Urdu speech-to-text with 27% WER. Used pyannote-audio for speaker diarization in multi-speaker scenarios. Integrated fine-tuned MBart model for generating concise Urdu summaries. Built with FastAPI backend and Firebase database, deployed with Ngrok for secure connectivity.",
     "tags": ["Flutter", "FastAPI", "Whisper", "pyannote", "MBart"],
     "demo": "",
-    "source": "https://github.com/saakhani/harf-ba-harf"
+    "source": "https://github.com/saakhani/harf-ba-harf",
+    "documentation": "assets/docs/FYPReport.pdf"
+    
   },
   
   {
@@ -14,7 +16,8 @@
     "details": "Research Project: Fine-tuned TinyLLaMA-1.1B model using five different LoRA configurations with varying rank, alpha, dropout, and target modules. Conducted supervised fine-tuning (SFT) on Databricks Dolly-15k dataset followed by preference fine-tuning using Direct Preference Optimization (DPO) on Argilla UltraFeedback dataset. Achieved 14% perplexity reduction with optimal configuration (Trial 5: r=12, α=128, targeting q_proj & k_proj). Applied gradient checkpointing and accumulation for efficient training on constrained T4 GPU resources. Integrated Hugging Face Hub for model storage and automatic pushing.",
     "tags": ["TinyLLaMA", "LoRA", "SFT", "DPO", "HuggingFace"],
     "demo": "",
-    "source": "https://huggingface.co/TK47"
+    "source": "https://huggingface.co/TK47",
+    "documentation": "assets/docs/FineTuningTinyLLAMA_Documentation.pdf"
   },
 
   {
@@ -22,28 +25,32 @@
     "description": "Hybrid retrieval using FAISS + BM25 with RRF; LLM-generated, context-grounded answers and custom evaluation framework.",
     "tags": ["RAG", "FAISS", "BM25", "RRR", "LLMs"],
     "demo": "",
-    "source": "https://github.com/TK-474/RAG-for-DAA-Textbook"
+    "source": "https://github.com/TK-474/RAG-for-DAA-Textbook",
+    "documentation": "assets/docs/RAG_Documentation.pdf"
   },
   {
     "title": "Big Data Analytics & Dashboarding",
     "description": "End-to-end big data pipeline with Kafka, HDFS, Spark, and HBase. Interactive dashboards using Flask and Plotly for sales analytics.",
     "tags": ["Kafka", "HDFS", "Spark", "HBase", "Flask", "Plotly"],
     "demo": "",
-    "source": "https://github.com/TK-474/BigDataAnalytics-Project"
+    "source": "https://github.com/TK-474/BigDataAnalytics-Project",
+    "documentation": "assets/docs/BDA_Project_Doc.pdf"
   },
   {
     "title": "Music Management Library (Groovy)",
     "description": "Full-stack music library with React frontend, Node.js backend, and Oracle database. Features advanced CSS animations and database management.",
     "tags": ["React", "Node.js", "Oracle", "CSS", "JavaScript"],
     "demo": "",
-    "source": "https://github.com/saakhani/groove-music-dbms"
+    "source": "https://github.com/saakhani/groove-music-dbms",
+    "documentation": "assets/docs/null"
   },
   {
     "title": "Event Management System (Ticketopia)",
     "description": "Scrum-based event management platform built with React, Express, Node.js, and PostgreSQL. Complete event ticketing and management solution.",
     "tags": ["React", "Express", "Node.js", "PostgreSQL", "Scrum"],
     "demo": "",
-    "source": "https://github.com/saakhani/ticketopia"
+    "source": "https://github.com/saakhani/ticketopia",
+    "documentation": "assets/docs/null"
   }
 ]
 

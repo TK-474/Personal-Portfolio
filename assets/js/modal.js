@@ -20,7 +20,7 @@ export function initProjectModal() {
   });
 }
 
-export function openModal(project) {
+export async function openModal(project) {
   if (!modalElements || !modalElements.container) return;
   modalElements.title.textContent = project.title || 'Untitled Project';
   const tags = (project.tags || []).map((t) => `<span class="tag">${t}</span>`).join(' ');
@@ -34,6 +34,25 @@ export function openModal(project) {
   let actionsHtml = '';
   if (project.demo) actionsHtml += `<a href="${project.demo}" target="_blank" rel="noreferrer" class="inline-flex items-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-colors">View Demo</a>`;
   if (project.source) actionsHtml += `<a href="${project.source}" target="_blank" rel="noreferrer" class="inline-flex items-center px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">View Source</a>`;
+  
+  // Check if documentation file exists
+  if (project.documentation) {
+    try {
+      const response = await fetch(project.documentation, { method: 'HEAD' });
+      if (response.ok) {
+        actionsHtml += `<a href="${project.documentation}" target="_blank" rel="noreferrer" class="inline-flex items-center px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-500 transition-colors">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          View Documentation
+        </a>`;
+      }
+    } catch (error) {
+      // Documentation file doesn't exist, don't show button
+      console.log(`Documentation not found for ${project.title}: ${project.documentation}`);
+    }
+  }
+  
   modalElements.actions.innerHTML = actionsHtml;
 
   modalElements.container.classList.remove('hidden');
