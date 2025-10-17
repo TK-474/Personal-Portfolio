@@ -1,0 +1,14 @@
+/* Base styles and resets */
+* { 
+  box-sizing: border-box; 
+}
+
+html, body { 
+  height: 100%; 
+}
+
+/* Debug: Ensure content is visible */
+.animate-on-scroll {
+  opacity: 1 !important;
+  visibility: visible !important;
+}

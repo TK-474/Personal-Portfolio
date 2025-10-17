@@ -1,0 +1,43 @@
+/* Section overlay styles for scroll effects */
+
+/* Base overlay styles */
+.section-overlay {
+  @apply absolute inset-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm opacity-0 transition-opacity duration-300;
+}
+
+/* Overlay states */
+.section-overlay.active {
+  @apply opacity-100;
+}
+
+.section-overlay.inactive {
+  @apply opacity-0;
+}
+
+/* Content sections with overlays */
+section.overlay-section {
+  @apply relative;
+}
+
+/* Ensure content stays above overlay */
+section.overlay-section > div:not(.section-overlay) {
+  @apply relative z-10;
+}
+
+/* Hero section (no overlay) */
+#hero {
+  @apply relative;
+}
+
+#hero .section-overlay {
+  @apply hidden;
+}
+
+/* Skills section (no overlay) */
+#skills {
+  @apply relative;
+}
+
+#skills .section-overlay {
+  @apply hidden;
+}

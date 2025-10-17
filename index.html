@@ -22,7 +22,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-    <link href="assets/css/styles.css" rel="stylesheet" />
+    <!-- Modular CSS -->
+    <link href="assets/css/base.css" rel="stylesheet" />
+    <link href="assets/css/components.css" rel="stylesheet" />
+    <link href="assets/css/animations.css" rel="stylesheet" />
+    <link href="assets/css/overlays.css" rel="stylesheet" />
+    <link href="assets/css/scrollTransitions.css" rel="stylesheet" />
   </head>
   <body class="bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-[Inter] relative">
     <!-- Global 3D background canvas -->
@@ -184,6 +189,7 @@
           <img src="https://skillicons.dev/icons?i=python" alt="Python" class="w-16 h-16 hover:scale-110 transition-transform" />
           <img src="https://skillicons.dev/icons?i=c" alt="C" class="w-16 h-16 hover:scale-110 transition-transform" />
           <img src="https://skillicons.dev/icons?i=cpp" alt="C++" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=cs" alt="C#" class="w-16 h-16 hover:scale-110 transition-transform" />
           <img src="https://skillicons.dev/icons?i=java" alt="Java" class="w-16 h-16 hover:scale-110 transition-transform" />
           <img src="https://skillicons.dev/icons?i=rust" alt="Rust" class="w-16 h-16 hover:scale-110 transition-transform" />
           <img src="https://skillicons.dev/icons?i=go" alt="Go" class="w-16 h-16 hover:scale-110 transition-transform" />
@@ -208,6 +214,8 @@
           <img src="https://skillicons.dev/icons?i=figma" alt="Figma" class="w-16 h-16 hover:scale-110 transition-transform" />
           <img src="https://skillicons.dev/icons?i=git" alt="Git" class="w-16 h-16 hover:scale-110 transition-transform" />
           <img src="https://skillicons.dev/icons?i=github" alt="GitHub" class="w-16 h-16 hover:scale-110 transition-transform" />
+          <img src="https://skillicons.dev/icons?i=obsidian" alt="Obsidian" class="w-16 h-16 hover:scale-110 transition-transform" />
+
         </div>
       </div>
     </section>
@@ -219,7 +227,7 @@
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Contact</h2>
         <div class="max-w-3xl">
           <div class="p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 backdrop-blur supports-[backdrop-filter]:backdrop-blur">
-            <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST" class="grid md:grid-cols-2 gap-4">
+            <form id="contactForm" action="https://formspree.io/f/mvgwlvzp" method="POST" class="grid md:grid-cols-2 gap-4">
               <input type="text" name="name" placeholder="Your name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 shadow-sm" />
               <input type="email" name="email" placeholder="Your email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 shadow-sm" />
               <textarea name="message" placeholder="Your message" required rows="5" class="md:col-span-2 w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 shadow-sm"></textarea>
@@ -268,7 +276,7 @@
       </div>
     </div>
 
-    <script src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/app.js"></script>
   </body>
   <script>
     // Apply persisted theme before paint to avoid FOUC
