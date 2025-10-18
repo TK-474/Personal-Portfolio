@@ -16,7 +16,7 @@
     "details": "Research Project: Fine-tuned TinyLLaMA-1.1B model using five different LoRA configurations with varying rank, alpha, dropout, and target modules. Conducted supervised fine-tuning (SFT) on Databricks Dolly-15k dataset followed by preference fine-tuning using Direct Preference Optimization (DPO) on Argilla UltraFeedback dataset. Achieved 14% perplexity reduction with optimal configuration (Trial 5: r=12, α=128, targeting q_proj & k_proj). Applied gradient checkpointing and accumulation for efficient training on constrained T4 GPU resources. Integrated Hugging Face Hub for model storage and automatic pushing.",
     "tags": ["TinyLLaMA", "LoRA", "SFT", "DPO", "HuggingFace"],
     "demo": "",
-    "source": "https://huggingface.co/TK47",
+    "source": "https://github.com/TK-474/TinyLLAMA-SFT-DPO-FineTuning/",
     "documentation": "assets/docs/FineTuningTinyLLAMA_Documentation.pdf"
   },
 
