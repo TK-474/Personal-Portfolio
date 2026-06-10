@@ -5,21 +5,21 @@ export function initThemeAndHeader() {
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
+    // Close mobile menu when a link is tapped
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
   }
 
   const themeToggle = document.getElementById('themeToggle');
-  const themeIcon = document.getElementById('themeIcon');
 
   function setTheme(mode) {
-    if (mode === 'dark') {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      if (themeIcon) themeIcon.textContent = '☀️';
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      if (themeIcon) themeIcon.textContent = '🌙';
-    }
+    const dark = mode === 'dark';
+    document.documentElement.classList.toggle('dark', dark);
+    try {
+      localStorage.setItem('theme', mode);
+    } catch (e) {}
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { dark } }));
   }
 
   if (themeToggle) {
@@ -28,11 +28,4 @@ export function initThemeAndHeader() {
       setTheme(isDark ? 'light' : 'dark');
     });
   }
-
-  try {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') setTheme('dark');
-  } catch (e) {}
 }
-
-

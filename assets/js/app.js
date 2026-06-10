@@ -4,6 +4,7 @@ import { initProjects } from './projects.js';
 import { initProjectModal } from './modal.js';
 import { initThreeBackground } from './threebg.js';
 import { initContactForm } from './contact.js';
+import { initTypewriter } from './typewriter.js';
 
 // Initialize all modules after DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,14 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
-  const themeToggle = document.getElementById('themeToggle');
-
   initThemeAndHeader();
   initScrollAnimations();
   initProjectModal();
   initProjects();
   initContactForm();
-  initThreeBackground(themeToggle);
+  initThreeBackground();
+  initTypewriter();
 });
-
-

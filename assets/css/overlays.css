@@ -1,43 +1,22 @@
-/* Section overlay styles for scroll effects */
+/* Modal / overlay styles */
 
-/* Base overlay styles */
-.section-overlay {
-  @apply absolute inset-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm opacity-0 transition-opacity duration-300;
+#projectModal .modal-enter {
+  animation: modalIn 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Overlay states */
-.section-overlay.active {
-  @apply opacity-100;
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.section-overlay.inactive {
-  @apply opacity-0;
-}
-
-/* Content sections with overlays */
-section.overlay-section {
-  @apply relative;
-}
-
-/* Ensure content stays above overlay */
-section.overlay-section > div:not(.section-overlay) {
-  @apply relative z-10;
-}
-
-/* Hero section (no overlay) */
-#hero {
-  @apply relative;
-}
-
-#hero .section-overlay {
-  @apply hidden;
-}
-
-/* Skills section (no overlay) */
-#skills {
-  @apply relative;
-}
-
-#skills .section-overlay {
-  @apply hidden;
+@media (prefers-reduced-motion: reduce) {
+  #projectModal .modal-enter {
+    animation: none;
+  }
 }

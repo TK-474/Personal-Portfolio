@@ -23,7 +23,7 @@
   {
     "title": "RAG for Design & Analysis of Algorithms",
     "description": "Hybrid retrieval using FAISS + BM25 with RRF; LLM-generated, context-grounded answers and custom evaluation framework.",
-    "tags": ["RAG", "FAISS", "BM25", "RRR", "LLMs"],
+    "tags": ["RAG", "FAISS", "BM25", "RRF", "LLMs"],
     "demo": "",
     "source": "https://github.com/TK-474/RAG-for-DAA-Textbook",
     "documentation": "assets/docs/RAG_Documentation.pdf"
@@ -42,7 +42,7 @@
     "tags": ["React", "Node.js", "Oracle", "CSS", "JavaScript"],
     "demo": "",
     "source": "https://github.com/saakhani/groove-music-dbms",
-    "documentation": "assets/docs/null"
+    "documentation": ""
   },
   {
     "title": "Event Management System (Ticketopia)",
@@ -50,7 +50,7 @@
     "tags": ["React", "Express", "Node.js", "PostgreSQL", "Scrum"],
     "demo": "",
     "source": "https://github.com/saakhani/ticketopia",
-    "documentation": "assets/docs/null"
+    "documentation": ""
   }
 ]
 
